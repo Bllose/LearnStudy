@@ -21,7 +21,10 @@ void fun() {
 
 - 
 
-[Macro](@宏) : macro  
-a single instruction given to a computer that produces a set of instructions for the computer to perform a particular piece of work.
+[宏](@宏) : Macro  
+> 广大 : a single instruction given to a computer that produces a set of instructions for the computer to perform a particular piece of work.  
 
-
+Macro-  
+large; relating to the whole of something, rather than its parts.  
+macroscopic(= large enough to be seen by the human eye)  
+macroeconomics(= the study of financial systems at a national level)
