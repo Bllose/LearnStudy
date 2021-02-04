@@ -17,11 +17,11 @@ void fun() {
 ```
 
 
-## [宏](@宏)
+## [宏](#宏)
 
 - 
 
-[Macro](#宏) : macro  
+[Macro](@宏) : macro  
 a single instruction given to a computer that produces a set of instructions for the computer to perform a particular piece of work.
 
 
