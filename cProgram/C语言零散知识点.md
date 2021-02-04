@@ -33,7 +33,14 @@ int main(){
     int sum = 3*n*n+3*n + 4*n*n+3*n + 5*n*n+3*n;
 ```
 
+# 概念规则
+## 形参和实参
+1) 形参只有在函数被调用时才会分配内存。调用结束后，立刻释放内存。所以**形参变量**只有在函数内部有效，不能在函数外部使用。
+2) 实参可以是常量、变量、表达式、函数等
+3) 函数调用中发生的数据传递是单向的。
 
+
+## 附录
 [宏](@宏) : Macro  
 > 广大 : a single instruction given to a computer that produces a set of instructions for the computer to perform a particular piece of work.  
 
