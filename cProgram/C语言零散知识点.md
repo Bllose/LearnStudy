@@ -15,3 +15,15 @@ void fun() {
     printf("result = %d\n", fun_inner(5, 67));
 }
 ```
+
+
+## 宏[^1]
+
+- 宏 注释 规则
+
+*[宏] : macro  
+a single instruction given to a computer that produces a set of instructions for the computer to perform a particular piece of work.
+
+*[注释]：注释内容
+
+[^1]: macro
