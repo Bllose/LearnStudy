@@ -19,7 +19,20 @@ void fun() {
 
 ## [宏](#宏)
 
-- 
+- 在程序编译时，将先由预处理程序进行宏代替。即将程序中出现宏名的位置，原封不动地变为宏表达式  
+``` C
+#define M n*n+3*n
+
+int main(){
+    int sum = 3*M + 4*M + 5*M;
+    printf("%d", sum);
+}
+```  
+编译后，程序实际得到的式子为：
+``` C
+    int sum = 3*n*n+3*n + 4*n*n+3*n + 5*n*n+3*n;
+```
+
 
 [宏](@宏) : Macro  
 > 广大 : a single instruction given to a computer that produces a set of instructions for the computer to perform a particular piece of work.  
