@@ -17,7 +17,8 @@ WHEN NOT MATCHED THEN
 INSERT INTO table_name(column_list) SELECT column_list FROM table_name_new ON DUPLICATE KEY UPDATE 
 ```
 ### 解决方案
-- 通过存储过程
+- 通过建立主键或唯一索引
 - 通过代码辅助完成
 > 收件将整个列表进行查询操作，返回所有存在的**关键字**，然后将所有得到的关键字进行更新操作。  
 而不存在的关键字进行插入操作
+- 通过存储过程与游标
