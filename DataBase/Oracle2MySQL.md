@@ -10,7 +10,9 @@ WHEN NOT MATCHED THEN
   INSERT (column_list) VALUES (column_values);
 ```
 > 对于MYSQL中提供的方法: ON DUPLICATE KEY UPDATE; REPLACE INTO.  
-相对于```MERGE INTO```缺陷在于缺少```ON (join condition)```. 即MYSQL只能通过唯一主键或唯一索引判断哪些数据是重复的。
+相对于```MERGE INTO```缺陷在于缺少```ON (join condition)```. 即MYSQL只能通过唯一主键或唯一索引判断哪些数据是重复的。  
+[MySQL supports the use of ```INSERT ... ON DUPLICATE KEY UPDATE``` syntax which can be used to achieve a similar effect with the limitation that the join between target and source has to be made only on **PRIMARY KEY** or **UNIQUE** constraints, which is not required in the ANSI/ISO standard. It also supports ```REPLACE INTO``` syntax, which first attempts an insert, and if that fails, deletes the row, if exists, and then inserts the new one.](https://stackoverflow.com/questions/42663074/is-merge-statement-available-in-mysql)
+
 ``` SQL
 INSERT INTO table_name(column_list) SELECT column_list FROM table_name_new ON DUPLICATE KEY UPDATE 
 ```
