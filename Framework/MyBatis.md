@@ -1,11 +1,10 @@
 # 技巧点
 ## 通用SQL部分
 当尝试使用通用SQL时，入参的名称可以通过名称获取，亦可以通过参数所属位置获取。  
-> 通过位置获取  
-
+- 通过位置获取  
 ```#{0.column_name, jdbcType=TYPE}```  
 
-> 通过名称获取  
+- 通过名称获取  
 ``` JAVA
 returnType functionName(@Param("param") paramTarget, ...);
 ```
