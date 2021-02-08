@@ -22,3 +22,43 @@ INSERT INTO table_name(column_list) SELECT column_list FROM table_name_new ON DU
 > 收件将整个列表进行查询操作，返回所有存在的**关键字**，然后将所有得到的关键字进行更新操作。  
 而不存在的关键字进行插入操作
 - 通过存储过程与游标
+
+
+## ROW_NUMBER() OVER() 
+- ORACLE
+``` ORACLE
+SELECT
+	ct.check_no,
+	adt.device_id,
+	ct.logistics_no,
+	row_number() over ( PARTITION BY adt.device_id ORDER BY ct.create_time DESC ) rn
+FROM
+	asc_check_t ct
+	INNER JOIN asc_check_detail_t adt ON adt.check_id = ct.check_id;
+```  
+- MYSQL
+``` MYSQL
+SELECT a.device_id,
+       a.check_no,
+       a.logistics_no,
+       IF
+           (
+                   @objno = a.device_id
+                   OR (@objno IS NULL AND a.device_id IS NULL),
+                   @rank := @rank + 1,
+                   @rank := 1
+           )                 AS rn,
+       @objno := a.device_id as compare
+FROM (SELECT ct.check_no,
+             adt.device_id,
+             ct.logistics_no
+      FROM asc_check_t ct
+               INNER JOIN asc_check_detail_t adt ON adt.check_id = ct.check_id
+      order by adt.device_id, ct.create_time desc
+     ) a,
+     (SELECT @rownum := 0, @objno := NULL, @rank := 0) b;
+```
+    首先**MYSQL**需要分为两个部分来完成该功能。
+    1. 通过子查询，将数据源数据集中起来，功能相当于完成了**ORACLE**将```FROM```数据源导入ROW_NUMBER()集合。
+    2. 通过变量```@rank```匹配关键字***device_id***,计数得到结果，从而达到```OVER()```的效果。
+> ```PARTITION BY expression ORDER BY expression```通过**MYSQL**中子查询的```ORDER BY```实现
