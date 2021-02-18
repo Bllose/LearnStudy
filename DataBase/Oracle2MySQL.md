@@ -68,8 +68,13 @@ FROM (SELECT ct.check_no,
 
 >    首先 **MYSQL** 需要分为两个部分来完成该功能。
 >>1. 通过子查询，将数据源数据集中起来，功能相当于完成了 **ORACLE** 将 ``` FROM ``` 数据源导入ROW_NUMBER()集合。  
-  2. 通过变量 ``` @rank ``` 匹配关键字 ***device_id*** ,计数得到结果，从而达到 ``` OVER() ``` 的效果。  
+>>2. 通过变量 ``` @rank ``` 匹配关键字 ***device_id*** ,计数得到结果，从而达到 ``` OVER() ``` 的效果。  
+
+
 > 变更诀窍
+>>``` PARTITION BY adt.device_id ORDER BY ct.create_time DESC ``` 中 ``` PARTITION BY ``` 并入子查询的``` GROUP BY ```, ``` ORDER BY ``` 并入子查询  	
+>>
+	 
 > ``` PARTITION BY expression ORDER BY expression ```通过**MYSQL**中子查询的``` ORDER BY ```实现  
 
 <font color=#008000>**MYSQL**子查询中变量```@objno```，其赋值动作```@objno := a.device_id as compare```一定要在```IF```语句之后才能生效，这是什么原因?</font>
