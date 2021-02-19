@@ -1,7 +1,7 @@
 # 基础
 ## Function
 - 查看  
-``` show function status;
+``` show function status; ```
 
 
 ## Procedure
