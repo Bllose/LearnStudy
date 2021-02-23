@@ -10,7 +10,7 @@
 
 
 ## Table
-- 删除主键
+- 删除主键  
 ``` ALTER TABLE table_name DROP PRIMARY KEY; ```
 
 
