@@ -9,6 +9,11 @@
 ``` show procedure status; ```
 
 
+## Table
+- 删除主键
+``` ALTER TABLE table_name DROP PRIMARY KEY; ```
+
+
 
 # 权限控制
 > ``` GRANT 权限 ON 数据库对象 TO 用户 ```
