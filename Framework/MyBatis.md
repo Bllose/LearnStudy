@@ -15,7 +15,7 @@ returnType functionName(@Param("param") paramTarget, ...);
 
 # IF ELSE
 **Mybatis中没有 if ... else 的用法**  
-通过<choose/> <when/> <otherwish/> 实现。  
+通过\<choose/> \<when/> \<otherwish/> 实现。  
 ``` Mybatis
 <choose>
     <when test = "">
