@@ -14,6 +14,16 @@
 ``` ALTER TABLE table_name DROP PRIMARY KEY; ```
 
 
+# 特性，技巧  
+- quenece  
+
+MySQL中并没有提供Oracle中独立的队列功能。 如果需要实现队列功能， 则需要通过 Function + table 的形式进行实现。  
+但是， MySQL的```FUNCTION``` 不允许显性或隐性地出现 ```commit```功能。 这就出现一种问题：  
+在其他语言调用过程中， 同一个 translation 中， 如果需要循环获取自增数， 自增 FUNCTION 将无法达到目的。  
+因为每次自增行为都是脏数据。  
+
+而该情况在 LOOP 语句中不存在。  即在存储过程中直接使用自增函数， 可以达到获取自增数列的目的。
+
 
 # 权限控制
 > ``` GRANT 权限 ON 数据库对象 TO 用户 ```
