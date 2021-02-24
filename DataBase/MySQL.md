@@ -14,6 +14,17 @@
 ``` ALTER TABLE table_name DROP PRIMARY KEY; ```
 
 
+## GRANT
+ 全局层 - mysql.user  
+ 
+ 数据库层 - mysql.db & mysql.host  
+ 
+ 表层  -  mysql.table_priv
+ 
+ 列层  -  mysql.columns_priv  
+ 
+ 子程序  -  mysql.procs_priv
+
 # 特性，技巧  
 - quenece  
 
