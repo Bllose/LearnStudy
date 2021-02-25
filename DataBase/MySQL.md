@@ -25,6 +25,17 @@
  
  子程序  -  mysql.procs_priv
 
+
+## SQL
+### LIMIT \[offset,\] rows | LIMIT rows OFFSET offset
+> 这里offset相当于游标， 指向起始位置， 比如：  
+> ```SELECT *  FROM orange LIMIT 5; -- 检索前5条记录(1~5)```  
+> 相当于  
+> ```SELECT * FROM orange LIMIT 0, 5;```  
+> 再比如:  
+> ```SELECT * FROM table_name LIMIT 10,15; -- 检索记录 11~25```
+
+
 # 特性，技巧  
 - quenece  
 
