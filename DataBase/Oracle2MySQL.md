@@ -9,7 +9,8 @@
 select to_char(to_date('2021-02-25 05:05:05', 'yyyy-MM-dd HH24:Mi:ss') + 8/24 , 'yyyy-MM-dd HH24:Mi:ss') from dual;
 ```
 相当于  
-``` SQL
+``` SQL  
+-- MYSQL  
 select date_format(date_add(str_to_date('2021-02-25 00:00:00.0' ,'%Y-%m-%d %H:%i:%s'), interval 8 hour),'%Y-%m-%d %H:%i:%s');
 ```
 > Oracle 的 DATE 值可以直接与 INTEGER 进行计算， 单位为天。 如果需要进行小时计算， 通过除以24实现。  
