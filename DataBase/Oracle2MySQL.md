@@ -1,6 +1,5 @@
 # 对称修改  
 ## Time  
-- 格式
 
 作为限制参数， 约束Date类型字段时， 如果是VARCHAR类型， ORACLE和MYSQL都能自动转化为时间类型进行判断  
 
@@ -40,8 +39,6 @@ select date_format(date_add(str_to_date('2021-02-25 00:00:00.0' ,'%Y-%m-%d %H:%i
 >> |  YEAR_MONTH  |
 
 
-
-- 时间计算
 
 # 非对称转化
 ## merge into
