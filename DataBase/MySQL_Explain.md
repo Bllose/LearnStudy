@@ -68,4 +68,54 @@ limit 0,10;
  | 1 | SIMPLE | lv3 |  | ref | ITEM_PRODUCT_T_N2 | ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv2.product_pc_id | 5 | 100 | Using index | 
  | 1 | SIMPLE | lv4 |  | ref | ITEM_PRODUCT_T_N2 | ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv3.product_pc_id | 5 | 100 | Using where | 
  | 1 | SIMPLE | link |  | ALL |  |  |  |  | 66185 | 100 | Using where | 
- | 1 | SIMPLE | offering |  | eq_ref | "PRIMARY | ITEM_OFFERING_T_N1" | PRIMARY | 5 | tbsdasc.link.offering_id | 1 | 100 | Using where | 
+ | 1 | SIMPLE | offering |  | eq_ref | "PRIMARY | ITEM_OFFERING_T_N1" | PRIMARY | 5 | tbsdasc.link.offering_id | 1 | 100 | Using where |   
+ 
+ ``` SQL
+ select `lv0`.`product_code`       AS `lv0_no`,
+       `lv0`.`product_name_cn`    AS `lv0_cn`,
+       `lv0`.`product_category`   AS `lv0_category`,
+       `lv1`.`product_code`       AS `lv1_no`,
+       `lv1`.`product_name_cn`    AS `lv1_cn`,
+       `lv1`.`product_name_en`    AS `lv1_en`,
+       `lv1`.`product_category`   AS `lv1_category`,
+       `lv2`.`product_code`       AS `lv2_no`,
+       `lv2`.`product_name_cn`    AS `lv2_cn`,
+       `lv2`.`product_name_en`    AS `lv2_en`,
+       `lv2`.`product_category`   AS `lv2_category`,
+       `lv3`.`product_code`       AS `lv3_no`,
+       `lv3`.`product_name_cn`    AS `lv3_cn`,
+       `lv3`.`product_name_en`    AS `lv3_en`,
+       `lv3`.`product_category`   AS `lv3_category`,
+       `lv4`.`product_code`       AS `lv4_no`,
+       `lv4`.`product_name_cn`    AS `lv4_cn`,
+       `lv4`.`product_name_en`    AS `lv4_en`,
+       `lv4`.`product_category`   AS `lv4_category`,
+       `link`.`offering_id`       AS `offering_id`,
+       `link`.`status`            AS `status`,
+       `offering`.`offering_code` AS `offering_code`,
+       `offering`.`offering_name` AS `offering_name`,
+       `offering`.`desc_cn`       AS `OFFER_DESC_CN`,
+       `offering`.`desc_en`       AS `OFFER_DESC_EN`,
+       `offering`.`brand`         AS `brand`
+from `tbsdasc`.`item_product_t` `lv0`
+         left join `tbsdasc`.`item_product_t` `lv1` on `lv0`.`product_pc_id` = `lv1`.`product_parent_id`
+         left join `tbsdasc`.`item_product_t` `lv2` on `lv1`.`product_pc_id` = `lv2`.`product_parent_id`
+         left join `tbsdasc`.`item_product_t` `lv3` on `lv2`.`product_pc_id` = `lv3`.`product_parent_id`
+         left join `tbsdasc`.`item_product_t` `lv4` on `lv3`.`product_pc_id` = `lv4`.`product_parent_id`
+         left join `tbsdasc`.`item_product_offering_t` `link` on `lv4`.`product_pc_id` = `link`.`product_pc_id`
+         left join `tbsdasc`.`item_offering_t` `offering` on `link`.`offering_id` = `offering`.`offering_id`
+where `lv0`.`product_code` = 'PDCG901161'
+  and `lv1`.`product_category` = '402-00025349'
+  and `lv1`.`product_status` = 1
+  and `lv4`.`product_status` = 1
+  and `link`.`status` = 1;
+ ```  
+| id | select_type | table | partitions | type | possible_keys | key | key_len | ref | rows | filtered | Extra |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+ | 1 | SIMPLE | lv4 |  | ALL | "PRIMARY | ITEM_PRODUCT_T_N1 | ITEM_PRODUCT_T_N2" |  |  |  | 5694 | 10 | Using where | 
+ | 1 | SIMPLE | lv3 |  | eq_ref | "PRIMARY | ITEM_PRODUCT_T_N1 | ITEM_PRODUCT_T_N2" | PRIMARY | 5 | tbsdasc.lv4.product_parent_id | 1 | 100 |  | 
+ | 1 | SIMPLE | lv2 |  | eq_ref | "PRIMARY | ITEM_PRODUCT_T_N1 | ITEM_PRODUCT_T_N2" | PRIMARY | 5 | tbsdasc.lv3.product_parent_id | 1 | 100 |  | 
+ | 1 | SIMPLE | lv1 |  | eq_ref | "PRIMARY | ITEM_PRODUCT_T_N1 | ITEM_PRODUCT_T_N2" | PRIMARY | 5 | tbsdasc.lv2.product_parent_id | 1 | 5 | Using where | 
+ | 1 | SIMPLE | lv0 |  | eq_ref | "PRIMARY | ITEM_PRODUCT_T_N1" | PRIMARY | 5 | tbsdasc.lv1.product_parent_id | 1 | 10 | Using where | 
+ | 1 | SIMPLE | link |  | ALL |  |  |  |  | 66185 | 1 | Using where; Using join buffer (Block Nested Loop) | 
+ | 1 | SIMPLE | offering |  | eq_ref | "PRIMARY | ITEM_OFFERING_T_N1" | PRIMARY | 5 | tbsdasc.link.offering_id | 1 | 100 |  | 
