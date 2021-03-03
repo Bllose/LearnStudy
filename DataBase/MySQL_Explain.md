@@ -22,6 +22,7 @@
   - using filesort : 用到额外的排序。此时mysql会根据联接类型浏览所有符合条件的记录，并保存排序关键字和行指针，然后排序关键字并按顺序检索行。(**当使用order by v1,而没用到索引时,就会使用额外的排序**)。
   - range checked for eache record(index map:N) : 没有好的索引可以使用
   - Using index for group-by : 表明可以在索引中找到分组所需的所有数据， 不需要查询实际的表
+  - filtered 表示返回结果的行数与所需读取的总行数百分比， 越大越好
 
 
 ``` SQL
