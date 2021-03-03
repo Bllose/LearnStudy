@@ -9,4 +9,14 @@
   - index ： 以索引的顺序进行全表扫描， 优点是 不用排序， 缺点是还要全表扫描
   - ALL : 全表扫描， 应尽量避免
 - possible_keys : 显示可能应用在这张表中的索引。 如果为空， 则说明没有可应用的索引
-- keys : 实际使用的索引。 如果为NULL， 则没有使用索引。
+- key : 实际使用的索引。 如果为NULL， 则没有使用索引。
+- key_len : 索引长度， 足够精确的前提下， 越短越好
+- ref : 显示索引的哪一列被使用了
+- rows : MySQL认为必须检索的用来返回请求数据的行数
+- Extra : MySQL解析的额外信息
+  - using index : 只用到索引， 可以避免访问表， 性能很高
+  - using where : 使用 ```where``` 来过滤数据，并不是所有```where clause```都显示```using where```。 比如```=```的方式
+  - using tmporary : 使用临时表处理
+  - using filesort : 用到额外的排序。此时mysql会根据联接类型浏览所有符合条件的记录，并保存排序关键字和行指针，然后排序关键字并按顺序检索行。(**当使用order by v1,而没用到索引时,就会使用额外的排序**)。
+  - range checked for eache record(index map:N) : 没有好的索引可以使用
+  - Using index for group-by : 表明可以在索引中找到分组所需的所有数据， 不需要查询实际的表
