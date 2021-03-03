@@ -22,3 +22,50 @@
   - using filesort : 用到额外的排序。此时mysql会根据联接类型浏览所有符合条件的记录，并保存排序关键字和行指针，然后排序关键字并按顺序检索行。(**当使用order by v1,而没用到索引时,就会使用额外的排序**)。
   - range checked for eache record(index map:N) : 没有好的索引可以使用
   - Using index for group-by : 表明可以在索引中找到分组所需的所有数据， 不需要查询实际的表
+
+
+``` SQL
+SELECT t.*
+FROM (select t.rule_id                                       as ruleId,
+             t.product_line                                  as productLineCode,
+             productLine.Product_Name_Cn                     as productLineName,
+             t.product_family                                as productFamilyCode,
+             productFamily.Product_Name_Cn                   as productFamilyName,
+             t.product_model                                    productModelCode,
+             productModel.Offering_Name                      as productModelName,
+             t.return_type                                   as returnType,
+             t.start_days                                    as startDays,
+             t.end_days                                      as endDays,
+             t.create_by                                     as createBy,
+             t.remark                                        as remarks,
+             t.valid_start_time                              as validStartTime,
+             t.valid_end_time                                as validEndTime,
+             t.cust_code                                     as customerCode,
+             cut.customer_name                               as customerName,
+             date_format(t.create_time, '%Y-%m-%d %H:%i:%S') as createTime
+      from ASC_PRODUCT_AUTH_RULE_T t
+               left join mv_item_product_v productModel on t.product_model = productModel.offering_code
+               left join asc_customer_t cut on t.cust_code = cut.customer_bg_code,
+           item_product_t productLine,
+           item_product_t productFamily
+      where t.enable_flag = 'Y'
+        and t.product_line = productLine.Product_Code
+        and t.product_family = productFamily.Product_Code
+        and cut.enable_flag = 'Y'
+        and t.rule_type = '10'
+      order by t.rule_id desc) t
+limit 0,10;
+```  
+| id | select_type | table | partitions | type | possible_keys | key | key_len | ref | rows | filtered | Extra |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+ | 1 | SIMPLE | cut |  | ALL |  |  |  |  | 8 | 12.5 | Using where; Using temporary; Using filesort | 
+ | 1 | SIMPLE | t |  | ALL |  |  |  |  | 476 | 0.21 | Using where; Using join buffer (Block Nested Loop) | 
+ | 1 | SIMPLE | productLine |  | ALL |  |  |  |  | 5694 | 10 | Using where; Using join buffer (Block Nested Loop) | 
+ | 1 | SIMPLE | productFamily |  | ALL |  |  |  |  | 5694 | 10 | Using where; Using join buffer (Block Nested Loop) | 
+ | 1 | SIMPLE | lv0 |  | ALL |  |  |  |  | 5694 | 100 | Using where | 
+ | 1 | SIMPLE | lv1 |  | ref | ITEM_PRODUCT_T_N2 | ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv0.product_pc_id | 5 | 100 | Using where | 
+ | 1 | SIMPLE | lv2 |  | ref | ITEM_PRODUCT_T_N2 | ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv1.product_pc_id | 5 | 100 | Using index | 
+ | 1 | SIMPLE | lv3 |  | ref | ITEM_PRODUCT_T_N2 | ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv2.product_pc_id | 5 | 100 | Using index | 
+ | 1 | SIMPLE | lv4 |  | ref | ITEM_PRODUCT_T_N2 | ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv3.product_pc_id | 5 | 100 | Using where | 
+ | 1 | SIMPLE | link |  | ALL |  |  |  |  | 66185 | 100 | Using where | 
+ | 1 | SIMPLE | offering |  | eq_ref | "PRIMARY | ITEM_OFFERING_T_N1" | PRIMARY | 5 | tbsdasc.link.offering_id | 1 | 100 | Using where | 
