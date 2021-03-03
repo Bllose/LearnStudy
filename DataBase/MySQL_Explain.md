@@ -112,11 +112,11 @@ where `lv0`.`product_code` = 'PDCG901161'
  ```  
 | id | select_type | table | partitions | type | possible_keys | key | key_len | ref | rows | filtered | Extra |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
- | 1 | SIMPLE | lv4 |  | ALL | "{2}" |  |  |  | 5694 | 10 | Using where | 
- | 1 | SIMPLE | lv3 |  | eq_ref | "{2}" | PRIMARY | 5 | tbsdasc.lv4.product_parent_id | 1 | 100 |  | 
- | 1 | SIMPLE | lv2 |  | eq_ref | "{2}" | PRIMARY | 5 | tbsdasc.lv3.product_parent_id | 1 | 100 |  | 
- | 1 | SIMPLE | lv1 |  | eq_ref | "{2}" | PRIMARY | 5 | tbsdasc.lv2.product_parent_id | 1 | 5 | Using where | 
- | 1 | SIMPLE | lv0 |  | eq_ref | "{1}" | PRIMARY | 5 | tbsdasc.lv1.product_parent_id | 1 | 10 | Using where | 
+ | 1 | SIMPLE | lv4 |  | ALL | "PRIMARY,ITEM_PRODUCT_T_N1,ITEM_PRODUCT_T_N2" |  |  |  | 5694 | 10 | Using where | 
+ | 1 | SIMPLE | lv3 |  | eq_ref | "PRIMARY,ITEM_PRODUCT_T_N1,ITEM_PRODUCT_T_N2" | PRIMARY | 5 | tbsdasc.lv4.product_parent_id | 1 | 100 |  | 
+ | 1 | SIMPLE | lv2 |  | eq_ref | "PRIMARY,ITEM_PRODUCT_T_N1,ITEM_PRODUCT_T_N2" | PRIMARY | 5 | tbsdasc.lv3.product_parent_id | 1 | 100 |  | 
+ | 1 | SIMPLE | lv1 |  | eq_ref | "PRIMARY,ITEM_PRODUCT_T_N1,ITEM_PRODUCT_T_N2" | PRIMARY | 5 | tbsdasc.lv2.product_parent_id | 1 | 5 | Using where | 
+ | 1 | SIMPLE | lv0 |  | eq_ref | "PRIMARY,ITEM_PRODUCT_T_N1" | PRIMARY | 5 | tbsdasc.lv1.product_parent_id | 1 | 10 | Using where | 
  | 1 | SIMPLE | link |  | ALL |  |  |  |  | 66185 | 1 | Using where; Using join buffer (Block Nested Loop) | 
  | 1 | SIMPLE | offering |  | eq_ref | "PRIMARY | ITEM_OFFERING_T_N1" | PRIMARY | 5 | tbsdasc.link.offering_id | 1 | 100 |  | 
 
@@ -126,10 +126,10 @@ where `lv0`.`product_code` = 'PDCG901161'
 与上下表建立字段的索引对，从而优化搜索  
 | id | select_type | table | partitions | type | possible_keys | key | key_len | ref | rows | filtered | Extra |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
- | 1 | SIMPLE | lv4 |  | ALL | "{2}" |  |  |  | 5694 | 10 | Using where | 
- | 1 | SIMPLE | lv3 |  | eq_ref | "{2}" | PRIMARY | 5 | tbsdasc.lv4.product_parent_id | 1 | 100 |  | 
- | 1 | SIMPLE | lv2 |  | eq_ref | "{2}" | PRIMARY | 5 | tbsdasc.lv3.product_parent_id | 1 | 100 |  | 
- | 1 | SIMPLE | lv1 |  | eq_ref | "{2}" | PRIMARY | 5 | tbsdasc.lv2.product_parent_id | 1 | 5 | Using where | 
- | 1 | SIMPLE | lv0 |  | eq_ref | "{1}" | PRIMARY | 5 | tbsdasc.lv1.product_parent_id | 1 | 10 | Using where | 
+ | 1 | SIMPLE | lv4 |  | ALL | "PRIMARY,ITEM_PRODUCT_T_N1,ITEM_PRODUCT_T_N2" |  |  |  | 5694 | 10 | Using where | 
+ | 1 | SIMPLE | lv3 |  | eq_ref | "PRIMARY,ITEM_PRODUCT_T_N1,ITEM_PRODUCT_T_N2" | PRIMARY | 5 | tbsdasc.lv4.product_parent_id | 1 | 100 |  | 
+ | 1 | SIMPLE | lv2 |  | eq_ref | "PRIMARY,ITEM_PRODUCT_T_N1,ITEM_PRODUCT_T_N2" | PRIMARY | 5 | tbsdasc.lv3.product_parent_id | 1 | 100 |  | 
+ | 1 | SIMPLE | lv1 |  | eq_ref | "PRIMARY,ITEM_PRODUCT_T_N1,ITEM_PRODUCT_T_N2" | PRIMARY | 5 | tbsdasc.lv2.product_parent_id | 1 | 5 | Using where | 
+ | 1 | SIMPLE | lv0 |  | eq_ref | "PRIMARY,ITEM_PRODUCT_T_N1" | PRIMARY | 5 | tbsdasc.lv1.product_parent_id | 1 | 10 | Using where | 
  | 1 | SIMPLE | link |  | ref | product_pc_id_index | product_pc_id_index | 6 | tbsdasc.lv4.product_pc_id | 15 | 10 | Using where | 
  | 1 | SIMPLE | offering |  | eq_ref | "PRIMARY | ITEM_OFFERING_T_N1" | PRIMARY | 5 | tbsdasc.link.offering_id | 1 | 100 |  | 
