@@ -63,12 +63,12 @@ limit 0,10;
  | 1 | SIMPLE | productLine |  | ALL |  |  |  |  | 5694 | 10 | Using where; Using join buffer (Block Nested Loop) | 
  | 1 | SIMPLE | productFamily |  | ALL |  |  |  |  | 5694 | 10 | Using where; Using join buffer (Block Nested Loop) | 
  | 1 | SIMPLE | lv0 |  | ALL |  |  |  |  | 5694 | 100 | Using where | 
- | 1 | SIMPLE | lv1 |  | ref | ITEM_PRODUCT_T_N2 | ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv0.product_pc_id | 5 | 100 | Using where | 
- | 1 | SIMPLE | lv2 |  | ref | ITEM_PRODUCT_T_N2 | ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv1.product_pc_id | 5 | 100 | Using index | 
- | 1 | SIMPLE | lv3 |  | ref | ITEM_PRODUCT_T_N2 | ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv2.product_pc_id | 5 | 100 | Using index | 
- | 1 | SIMPLE | lv4 |  | ref | ITEM_PRODUCT_T_N2 | ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv3.product_pc_id | 5 | 100 | Using where | 
+ | 1 | SIMPLE | lv1 |  | ref | ITEM_PRODUCT_T_N2,ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv0.product_pc_id | 5 | 100 | Using where | 
+ | 1 | SIMPLE | lv2 |  | ref | ITEM_PRODUCT_T_N2,ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv1.product_pc_id | 5 | 100 | Using index | 
+ | 1 | SIMPLE | lv3 |  | ref | ITEM_PRODUCT_T_N2,ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv2.product_pc_id | 5 | 100 | Using index | 
+ | 1 | SIMPLE | lv4 |  | ref | ITEM_PRODUCT_T_N2,ITEM_PRODUCT_T_N2 | 6 | tbsdasc.lv3.product_pc_id | 5 | 100 | Using where | 
  | 1 | SIMPLE | link |  | ALL |  |  |  |  | 66185 | 100 | Using where | 
- | 1 | SIMPLE | offering |  | eq_ref | "PRIMARY | ITEM_OFFERING_T_N1" | PRIMARY | 5 | tbsdasc.link.offering_id | 1 | 100 | Using where |   
+ | 1 | SIMPLE | offering |  | eq_ref | "PRIMARY,ITEM_OFFERING_T_N1" | PRIMARY | 5 | tbsdasc.link.offering_id | 1 | 100 | Using where |   
  
  ``` SQL
  select `lv0`.`product_code`       AS `lv0_no`,
