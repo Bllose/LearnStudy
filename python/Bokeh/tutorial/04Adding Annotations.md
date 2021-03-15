@@ -154,5 +154,69 @@ p.add_layout(Arrow(end=VeeHead(size=35), line_color="red",
 show(p)
 ```  
 
+## Legends  
+When plots have multiple glyphs, it is desirable to include a legend to help users interpret what they see. Bokeh can generate legends easily based on the glyphs that are added.
+
+### Simple Legends  
+In the simplest case, you can simply pass a string as the ```legend_label``` argument to a glyph function:  
+``` p.circle(x, y, legend_label="sin(x)") ```  
+In this case Bokeh will automatically create a legend that shows a representation of that glyph, labeled by the test you provided. A full example is below.  
+
+``` Python
+import numpy as np
+
+x = np.linspace(0, 4*np.pi, 100)
+y = np.sin(x)
+
+p = figure(height=400)
+
+p.circle(x, y, legend_label="sin(x)")
+p.line(x, 2*y, legend_label="2*sin(x)", line_dash=[4, 4], line_color="orange", line_width=2)
+
+show(p)
+```  
+
+### Compound legends  
+In the example above, we provided a different legend label to each glyph method. Sometimes, two (or more) different glyphs are used with a single data source. In this case, you can make compound legends by specifying the same legend argument to multiple glyph methods when creating a plot, for example, if you plot a ```sin``` curve with both a line and a marker, you may give them the same label to cause them to show up together in the legend:  
+``` Python 
+p.circle(x, y, legend_label="sin(x)")
+p.line(x, y, legend_label="sin(x)", line_dash=[4, 4], line_color="orange", line_width=2)  
+```  
+
+``` Python  
+# EXERCISE:  
+# (1) Making a compound legend 
+# (2) Position the legend using p.legend.location.  Possible values are listed at:
+#     https://bokeh.pydata.org/en/latest/docs/reference/core/enums.html#bokeh.core.enums.Anchor
+ 
+```  
+
+## Color bars  
+Color bars are especially useful if we vary the color of a glyph according to some color mapping. Bokeh color bars are configured with a color mapper and added to plots with the ```add_layout``` method:  
+``` Python  
+color_mapper = LinearColorMapper(palette="Viridis256", low=data_low, high=data_high)
+color_bar = ColorBar(color_mapper=color_mapper, location=(0,0))
+p.add_layout(color_bar, 'right')  
+```  
+The example below shows a complete example that also uses the color mapper to transform the glyph color.  
+
+``` Python 
+from bokeh.sampledata.autompg import autompg
+from bokeh.models import LinearColorMapper, ColorBar
+from bokeh.transform import transform
+
+source = ColumnDataSource(autompg)
+color_mapper = LinearColorMapper(palette="Viridis256", low=autompg.weight.min(), high=autompg.weight.max())
+
+p = figure(x_axis_label='Horsepower', y_axis_label='MPG', tools='', toolbar_location=None)
+p.circle(x='hp', y='mpg', color=transform('weight', color_mapper), size=20, alpha=0.6, source=autompg)
+
+color_bar = ColorBar(color_mapper=color_mapper, label_standoff=12, location=(0,0), title='Weight')
+p.add_layout(color_bar, 'right')
+
+show(p)  
+```  
+
+
 
 
