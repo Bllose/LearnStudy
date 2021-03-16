@@ -24,15 +24,19 @@ testList.add(new TestVo(22, "Rcedw"));
 testList.add(new TestVo(33, "Again"));
 testList.add(new TestVo(44, "Forever"));
 testList.add(new TestVo(44, "Test"));
+testList.add(new TestVo(0, "Empty"));
 
 List<Integer> result = testList.stream().map(TestVo::getId).collect(Collectors.toList());
 List<Integer> result_1 = testList.stream().map(TestVo::getId).distinct().collect(Collectors.toList());
+List<Integer> result_2 = testList.stream().filter(vo -> vo.getId() > 0).map(TestVo::getId).distinct().collect(Collectors.toList());
 
 System.out.println(result);
 System.out.println(result_1);
+System.out.println(result_2);
 ```  
 输出结果: 
 ```  
-[11, 22, 33, 44, 44]
+[11, 22, 33, 44, 44, 0]
+[11, 22, 33, 44, 0]
 [11, 22, 33, 44]
 ```
