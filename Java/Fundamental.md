@@ -43,7 +43,7 @@ System.out.println(result_2);
 ```   
 > 操作符号 ```::```  
 > 意味着标记一个方法调用规则  
-> ```ClassType``` ```::``` ```FunctionName````  
+> ```ClassType``` ```::``` ```FunctionName```   
 > e.g.
 > ```testList.stream().map(TestVo::getId).collect(Collectors.toList())```
 > 意味着将_testList_列表中对象调用方法```getId```获取的值组成一个新的列表。  
