@@ -11,7 +11,13 @@
 
 ## Table
 - 删除主键  
-``` ALTER TABLE table_name DROP PRIMARY KEY; ```
+``` ALTER TABLE table_name DROP PRIMARY KEY; ```  
+
+## Column  
+- 查看表下所有字段  
+``` SHOW FULL COLUMNS FROM database.table_name; ```  
+MySQL 下只能针对表中所有字段进行信息输出。  
+如果需要获取部分字段信息， 需要做额外处理。
 
 
 ## GRANT
