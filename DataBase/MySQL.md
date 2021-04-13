@@ -54,7 +54,13 @@ MySQL中并没有提供Oracle中独立的队列功能。 如果需要实现队�
 
 
 # 权限控制
-> ``` GRANT 权限 ON 数据库对象 TO 用户 ```
+> ``` GRANT 权限 ON 数据库对象 TO 用户 ```  
+> ``` SQL  
+> # 创建用户
+> create user user_name@'%' identified by 'password'; 
+> # 授予权限
+> grant select,insert,update,delete on test.t_m_user to user_name@'%';
+> ```
 
 ## 视图
 1. ``` GRANT create view ON database_name.'*' TO user_name@'%'; ```
