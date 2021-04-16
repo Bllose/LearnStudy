@@ -1,6 +1,5 @@
 # CONNECT BY  
 
-**TABLE( CAST( MULTISET() )  AS sys.odcinumberlist)**  
 
 ``` select level from dual connect by level < 3 ```  
 | LEVEL |  
@@ -35,3 +34,8 @@ CONNECT BY
 | 08-2月-21 | 14-2月-21 | 6 |
 | 01-2月-21 | 07-2月-21 | 5 |
 | 25-1月-21 | 31-1月-21 | 4 |
+  
+  
+  
+### TABLE( CAST( MULTISET() )  AS sys.odcinumberlist)   
+
