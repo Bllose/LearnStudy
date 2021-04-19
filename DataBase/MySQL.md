@@ -11,7 +11,13 @@
 
 ## Table
 - 删除主键  
-``` ALTER TABLE table_name DROP PRIMARY KEY; ```  
+``` ALTER TABLE table_name DROP PRIMARY KEY; ```   
+
+- 查询表信息  
+``` SQL
+use information_scheam;
+select * from tables where table_schema = "db_name" and table_name = "table_name1";
+```
 
 ## Column  
 - 查看表下所有字段  
