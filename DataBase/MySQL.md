@@ -1,4 +1,7 @@
 # 基础
+## MySQL
+``` SELECT VERSION(); ```
+
 ## Function
 - 查看  
 ``` show function status; ```
