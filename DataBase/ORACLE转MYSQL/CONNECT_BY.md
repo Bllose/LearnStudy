@@ -59,4 +59,9 @@ SELECT SUBSTRING_INDEX(SUBSTRING_INDEX('12,3,13', ',', help_topic_id + 1), ',', 
 FROM mysql.help_topic
 WHERE help_topic_id < LENGTH('12,3,13') - LENGTH(REPLACE('12,3,13', ',', '')) + 1;
 ```
+| num |
+| --- |
+| 12 |
+| 3 |
+| 13 |
 
