@@ -1,15 +1,18 @@
+~\AppData\Local\chia-blockchain\app-1.1.1\resources\app.asar.unpacked\daemon  
+chia.exe
+
 1. 首先获取自己的public key 
 ```
 chia keys show
 Showing all private keys:
 
-Fingerprint: 185182624
-Master public key (m): 87e0ece39bed081b3c557c197605c6b7eba93ce45c20ec61743b0836864bbdd44bb120ab694dfcc97fc235c6defe3ab3
-Master private key (m): 0409e6c8e48d4bf1bdbe08988c6d6a609e548d6047d0c19db1077a787c2977a6
-Farmer public key (m/12381/8444/0/0): a2d3a036cc57c3f29b38fa6b021097d7504baaff8756fbe884ba2f4057f5991205a92c535fe96e35468b2e06c47f2d8e
-Pool public key (m/12381/8444/1/0): 836811020c1d625b0e15dab06f11404a0d30b09f9f83f702909c94a5ffc6f0fc5efc443763c0852430c93fa5789ebd9d
-First wallet key (m/12381/8444/2/0): 92f0c900a268eea30cfc74b3077d30c7f5f6d5f9418eb75fa064e5f08d39bea8ed15fbc58160fc88b5dde354c29f7a08
-First wallet address: xch1n70szrje9m7w0m848ca4aza8yc5c8xpxwj5lcmskpje6mspv20hsc6kf39
+Fingerprint: 2787218046
+Master public key (m): 8f3b80b79f6b80e0b1e035057b48f7159831bc5be880f2cef8c143acafad38c0f3192cbd87dd560f994fe1d7839904bf
+Master private key (m): 44c2f558eebea6dcd47aa9ceb12c7d5bd4c72434330b6ff1622bc898b5b49d2f
+Farmer public key (m/12381/8444/0/0): adc081fa0e4cd8260687fdb3de0417b4568402f03110b50040d119401f9ea6178bae2fc77e373f4732faaa21dfa60aeb
+Pool public key (m/12381/8444/1/0): a02a3c1af12cd5f34ce8dde6d0cb58e64e6d2d5ce8228e2aa9fdd18d1268a1d9bd47d5d2bceb828237d0643ea4904437
+First wallet key (m/12381/8444/2/0): 8fc4e26b5e582b806dbff90692c9c1f43dbbef9fcf060b777f5b35fb533a17f193aa00be4d369c243ef3331d46142091
+First wallet address: xch1smlqd88tpslhatvdecuxvu2a8n74sjv5du9n3g4f29qvlywsjqtq3g2fdy
 ```  
 
 2. 创建命令中加入自己的public key  
