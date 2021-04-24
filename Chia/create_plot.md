@@ -90,7 +90,7 @@ Example 3 below will create five k32 plots one at a time using 4GB (note - not G
 chia plots create -k 34 -e -b 8000 -r 2 -f a2d3a036cc57c3f29b38fa6b021097d7504baaff8756fbe884ba2f4057f5991205a92c535fe96e35468b2e06c47f2d8e -p 836811020c1d625b0e15dab06f11404a0d30b09f9f83f702909c94a5ffc6f0fc5efc443763c0852430c93fa5789ebd9d -a -t /path/to/temporary/directory -d /path/to/final/directory
 ```
 
-# 检查田信息  
+# 检查田信息  chia plots check -n [num checks] -l -g [substring]
 ```
 ~AppData\Local\chia-blockchain\app-1.1.1\resources\app.asar.unpacked\daemon> chia plots check  
 2021-04-24T22:42:14.064  chia.plotting.check_plots        : INFO     Loading plots in config.yaml using plot_tools loading code
@@ -138,4 +138,10 @@ chia plots create -k 34 -e -b 8000 -r 2 -f a2d3a036cc57c3f29b38fa6b021097d7504ba
 2021-04-24T22:43:14.384  chia.plotting.check_plots        : INFO     5 plots of size 32
 ```  
 
+**如果只想检查重复的田**  
+``` chia plots check  -l -n 0 ```  
 
+**想检查特定目录或者名字或者大小的田**  
+```-g``` check only plots with directory or file name containing case-sensitive [substring].  
+只检查大小类型为k33的田: ```chia plots check -g k33```  
+只检查2020年10月30日创建的田：```chia plots check -g 2020-10-31```
