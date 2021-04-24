@@ -61,4 +61,21 @@ but also writes about 12% more data during creation of the plot.
 For now, SSD temp space will likely plot faster with -e (bitfield back propagation disabled) 
 and for slower spinning disks, i.e SATA 5400/7200 rpm, not using -e (bitfield enabled) is a better option.
 
-4. 
+**Example**
+
+Example below will create a k32 plot and use 4GB (note - not GiB) of memory.
+基础命令， 使用4GB内存，建立32k的plot。
+```chia plots create -k 32 -b 4000 -t /path/to/temporary/directory -d /path/to/final/directory```
+
+Example 2 below will create a k34 plot and use 8GB of memory, 2 threads and 64 buckets
+如果临时存储盘为SSD，推荐使用-e，如果是磁盘则不要使用该标记。
+```chia plots create -k 34 -e -b 8000 -r 2 -u 64 -t /path/to/temporary/directory -d /path/to/final/directory```
+
+Example 3 below will create five k32 plots one at a time using 4GB (note - not GiB) of memory.
+最终要制作5张图。
+```chia plots create -k 32 -b 4000 -t /path/to/temporary/directory -d /path/to/final/directory -n 5```
+
+就我自己的案例来说， 我需要在其他机子上制作我的农田，则使用命令
+```
+chia plots create -k 34 -e -b 8000 -r 2 -f a2d3a036cc57c3f29b38fa6b021097d7504baaff8756fbe884ba2f4057f5991205a92c535fe96e35468b2e06c47f2d8e -p 836811020c1d625b0e15dab06f11404a0d30b09f9f83f702909c94a5ffc6f0fc5efc443763c0852430c93fa5789ebd9d -a -t /path/to/temporary/directory -d /path/to/final/directory
+```
