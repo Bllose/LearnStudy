@@ -87,7 +87,37 @@ Example 3 below will create five k32 plots one at a time using 4GB (note - not G
 
 就我自己的案例来说， 我需要在其他机子上制作我的农田，则使用命令
 ```
-chia plots create -k 34 -e -b 8000 -r 2 -f a2d3a036cc57c3f29b38fa6b021097d7504baaff8756fbe884ba2f4057f5991205a92c535fe96e35468b2e06c47f2d8e -p 836811020c1d625b0e15dab06f11404a0d30b09f9f83f702909c94a5ffc6f0fc5efc443763c0852430c93fa5789ebd9d -a -t /path/to/temporary/directory -d /path/to/final/directory
+chia plots create -k 34 -e -b 8000 -r 2 -f a2d3a036cc57c3f29b38fa6b021097d7504baaff8756fbe884ba2f4057f5991205a92c535fe96e35468b2e06c47f2d8e -p 836811020c1d625b0e15dab06f11404a0d30b09f9f83f702909c94a5ffc6f0fc5efc443763c0852430c93fa5789ebd9d -t /path/to/temporary/directory -d /path/to/final/directory
+```  
+```
+chia plots create -k 25 -e -b 4000 -r 2 -f adc081fa0e4cd8260687fdb3de0417b4568402f03110b50040d119401f9ea6178bae2fc77e373f4732faaa21dfa60aeb -p a02a3c1af12cd5f34ce8dde6d0cb58e64e6d2d5ce8228e2aa9fdd18d1268a1d9bd47d5d2bceb828237d0643ea4904437 -t ~/chia/temp -d ~/chia/final --override-k
+2021-04-25T07:34:59.490  chia.plotting.create_plots       : WARNING  exec args: <chia.cmds.plots.create_cmd.<locals>.Params object at 0x7f05cdf533d0>
+2021-04-25T07:34:59.490  chia.plotting.create_plots       : WARNING  exec root_path: /home/bllose/.chia/mainnet
+2021-04-25T07:34:59.490  chia.plotting.create_plots       : WARNING  exec use_datetime: True
+2021-04-25T07:34:59.490  chia.plotting.create_plots       : WARNING  exec test_private_keys: None
+2021-04-25T07:34:59.499  chia.plotting.create_plots       : WARNING  Creating plots with size k=25, which is less than the minimum required for mainnet
+2021-04-25T07:34:59.499  chia.plotting.create_plots       : INFO     Creating 1 plots of size 25, pool public key:  a02a3c1af12cd5f34ce8dde6d0cb58e64e6d2d5ce8228e2aa9fdd18d1268a1d9bd47d5d2bceb828237d0643ea4904437 farmer public key: adc081fa0e4cd8260687fdb3de0417b4568402f03110b50040d119401f9ea6178bae2fc77e373f4732faaa21dfa60aeb
+2021-04-25T07:34:59.506  chia.plotting.create_plots       : INFO     Memo: a02a3c1af12cd5f34ce8dde6d0cb58e64e6d2d5ce8228e2aa9fdd18d1268a1d9bd47d5d2bceb828237d0643ea4904437adc081fa0e4cd8260687fdb3de0417b4568402f03110b50040d119401f9ea6178bae2fc77e373f4732faaa21dfa60aeb6c95360f87da332a7fa029dbd8a8a3480ed5af23f12eeadf6d2f4e8d30fee52b
+2021-04-25T07:34:59.506  chia.plotting.create_plots       : INFO     Adding directory /home/bllose/chia/final to harvester for farming
+2021-04-25T07:34:59.544  chia.plotting.create_plots       : INFO     Starting plot 1/1
+
+Starting plotting progress into temporary dirs: /home/bllose/chia/temp and /home/bllose/chia/temp
+ID: c47f9e6f9f124d45bceba3c5c1a07c3e6cb9c6ae6a8ec51dffb02427468d4457
+Plot size is: 25
+Buffer size is: 4000MiB
+Using 128 buckets
+Using 2 threads of stripe size 65536
+
+Starting phase 1/4: Forward Propagation into tmp files... Sun Apr 25 07:34:59 2021
+Computing table 1
+F1 complete, time: 0.895 seconds. CPU (146.05%) Sun Apr 25 07:35:00 2021
+Computing table 2
+	Bucket 0 uniform sort. Ram: 3.848GiB, u_sort min: 0.003GiB, qs min: 0.002GiB.
+	Bucket 1 uniform sort. Ram: 3.848GiB, u_sort min: 0.003GiB, qs min: 0.002GiB.
+	Bucket 2 uniform sort. Ram: 3.848GiB, u_sort min: 0.003GiB, qs min: 0.002GiB.
+	Bucket 3 uniform sort. Ram: 3.848GiB, u_sort min: 0.003GiB, qs min: 0.002GiB.
+	Bucket 4 uniform sort. Ram: 3.848GiB, u_sort min: 0.007GiB, qs min: 0.002GiB.
+...
 ```
 
 # 检查田信息  chia plots check -n [num checks] -l -g [substring]
