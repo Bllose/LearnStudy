@@ -1,5 +1,12 @@
+# 几个重要文件所属的位置
+WINDOWS 
+- **chia.exe**  
 ~\AppData\Local\chia-blockchain\app-1.1.1\resources\app.asar.unpacked\daemon  
-chia.exe
+- **config.yaml**  
+~\.chia\mainnet\config
+- 
+
+
 
 1. 首先获取自己的public key 
 ```
