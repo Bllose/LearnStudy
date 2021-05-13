@@ -19,4 +19,17 @@ echo record the disk information : %n%
 choice /T 600 /d y /n > nul
 
 goto begin
-```
+```  
+
+1、查看内存占用情况
+``` wmic OS get FreePhysicalMemory ```
+
+2、查看系统内存总数
+``` wmic ComputerSystem get TotalPhysicalMemory ```
+
+3、查看CPU占用情况
+``` wmic cpu get loadpercentage ```
+
+
+实际应用，做个监测cpu占用的bat，后期加上日期，加上ping计时输出到txt就可作为监控日志了
+``` @for /f "skip=1" %p in ('wmic cpu get loadpercentage') do @echo %p% ```
