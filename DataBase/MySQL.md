@@ -20,7 +20,43 @@ SELECT * FROM INFORMATION_SCHEMA.INNODB_LOCK_WAITS;
 | tbsdasc | asc\_guest\_association\_t | 2 | 0 |
 | tbsdasc | asc\_device\_bom\_t | 8 | 0 |
 | tbsdasc | asc\_reverse\_positions\_t | 8 | 0 |
-| tbsdasc | asc\_return\_apply\_t | 9 | 0 |
+| tbsdasc | asc\_return\_apply\_t | 9 | 0 |  
+
+```show status like '%lock%';```
+| Variable\_name | Value |
+| :--- | :--- |
+| Com\_lock\_tables | 0 |
+| Com\_unlock\_tables | 0 |
+| Handler\_external\_lock | 2 |
+| Innodb\_row\_lock\_current\_waits | 0 |
+| Innodb\_row\_lock\_time | 25316234 |
+| Innodb\_row\_lock\_time\_avg | 8441 |
+| Innodb\_row\_lock\_time\_max | 301522 |
+| Innodb\_row\_lock\_waits | 2999 |
+| Key\_blocks\_not\_flushed | 0 |
+| Key\_blocks\_unused | 319650 |
+| Key\_blocks\_used | 16 |
+| Locked\_connects | 0 |
+| Performance\_schema\_locker\_lost | 0 |
+| Performance\_schema\_metadata\_lock\_lost | 0 |
+| Performance\_schema\_rwlock\_classes\_lost | 0 |
+| Performance\_schema\_rwlock\_instances\_lost | 0 |
+| Performance\_schema\_table\_lock\_stat\_lost | 0 |
+| Qcache\_free\_blocks | 1 |
+| Qcache\_total\_blocks | 1 |
+| Table\_locks\_immediate | 1020295 |
+| Table\_locks\_waited | 0 |  
+
+```show processlist;```  
+| Id | User | Host | db | Command | Time | State |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2287856 | tbsdasc | 10.242.118.143:62948 | tbsdasc | Query | 339 | updating |
+| 2287857 | tbsdasc | 10.116.198.111:60692 | tbsdasc | Query | 89 | Sending data |
+| 2287858 | tbsdasc | 10.116.198.111:60754 | tbsdasc | Sleep | 1507 |  |
+
+```SELECT * FROM INFORMATION_SCHEMA.INNODB_LOCKS;```  
+
+
 
 ## Function
 - 查看  
