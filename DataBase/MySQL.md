@@ -2,6 +2,26 @@
 ## MySQL
 ``` SELECT VERSION(); ```
 
+**与锁表有关的语句**  
+```
+show OPEN TABLES where In_use > 0;
+show status like '%lock%';
+show processlist;
+SELECT * FROM INFORMATION_SCHEMA.INNODB_LOCKS;
+SELECT * FROM INFORMATION_SCHEMA.INNODB_LOCK_WAITS;
+```  
+
+```show OPEN TABLES where In_use > 0;```  
+| Database | Table | In\_use | Name\_locked |
+| :--- | :--- | :--- | :--- |
+| tbsdasc | asc\_attachment\_t | 8 | 0 |
+| tbsdasc | asc\_return\_apply\_detail\_t | 8 | 0 |
+| tbsdasc | sequence | 1 | 0 |
+| tbsdasc | asc\_guest\_association\_t | 2 | 0 |
+| tbsdasc | asc\_device\_bom\_t | 8 | 0 |
+| tbsdasc | asc\_reverse\_positions\_t | 8 | 0 |
+| tbsdasc | asc\_return\_apply\_t | 9 | 0 |
+
 ## Function
 - 查看  
 ``` show function status; ```
