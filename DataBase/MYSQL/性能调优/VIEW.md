@@ -12,3 +12,17 @@
 如果隐藏的衍生表需要很高的代价产生， EXPLAIN就会变得性能很低并且执行很慢， 因为它需要实际执行和构建衍生表。  
 
 这些算法在生成视图的时候已经确认， 不会因为不同的查询条件而改变。
+
+
+直接优化视图不太合适。  
+
+通过创建表， 通过procedure插入或更新数据， 使用Event作为定时触发。  
+``` CREATE TABLE table_name (...);```  
+``` SQL
+CREATE PROCEDURE procedure_name()
+BEGIN
+  sql_statement; 
+END;
+```  
+``` SQL 
+CREATE EVENT event_name ON SCHEDULE every 1 day DO sql_statement;
