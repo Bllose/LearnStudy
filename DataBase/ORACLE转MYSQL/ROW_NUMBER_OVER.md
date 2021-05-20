@@ -6,7 +6,7 @@ SELECT
 	ct.logistics_no,
 	row_number() over ( PARTITION BY adt.device_id ORDER BY ct.create_time DESC ) rn
 FROM
-	asc_check_t ct
+	table_name ct
 	INNER JOIN asc_check_detail_t adt ON adt.check_id = ct.check_id;
 ```  
 - MYSQL
@@ -25,8 +25,8 @@ SELECT a.device_id,
 FROM (SELECT ct.check_no,
              adt.device_id,
              ct.logistics_no
-      FROM asc_check_t ct
-               INNER JOIN asc_check_detail_t adt ON adt.check_id = ct.check_id
+      FROM table_one ct
+               INNER JOIN table_two adt ON adt.check_id = ct.check_id
       order by adt.device_id, ct.create_time desc
      ) a,
      (SELECT @rownum := 0, @objno := NULL, @rank := 0) b;
