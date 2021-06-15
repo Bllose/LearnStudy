@@ -1,5 +1,7 @@
 # information_schema
-``` SELECT * FROM information_schema.INNODB_TRX; ```  
+``` SQL 
+SELECT * FROM information_schema.INNODB_TRX; 
+```  
 
 ``` SQL  
 select l.requesting_trx_id,
@@ -23,6 +25,8 @@ where l.requesting_trx_id = t1.trx_id
 
 
 # processlist  
-``` show full processlist; ```
+``` SQL
+show full processlist; 
+```
 
 
