@@ -1,3 +1,5 @@
+结论：如果需要适应 IN 条件， 则 IN 语句中一定是固定值， 而不是一个子查询。 否则性能直线下降。
+
 ``` SQL
 update asc_return_apply_detail_t t
 set t.draft_status   = 'N',
