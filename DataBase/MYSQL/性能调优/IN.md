@@ -13,5 +13,5 @@ where t.device_id in (select cd.device_id from asc_check_detail_t cd where cd.ch
 
 这段SQL在真实的查询场景中非常的慢。 根本原因为 ```DEPENDENT SUBQUERY``` 的基本原理为依赖性查询。  
 所谓的依赖性，在此处的意思为， 子查询```select cd.device_id from asc_check_detail_t cd where cd.check_id = 123```依赖于外层的【查询结果】。  
-这里的查询结果指的是， MYSQL尝试确认并收集【可能需要更新】的信息（就当前语句而言，是灾难性的全表扫描）。  
+这里的查询结果指的是， MYSQL尝试确认并收集【可能需要更新】的信息（就当前语句而言，并没有其他过滤条件，所以是灾难性的全表扫描）。  
 当拿到这些可能需要更新的信息后， 再一条一条通过子查询进行匹配， 这就是为什么子查询走了索引但是性能还是极差。
