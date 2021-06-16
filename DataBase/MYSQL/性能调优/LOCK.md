@@ -23,6 +23,8 @@ where l.requesting_trx_id = t1.trx_id
   and l.blocking_trx_id = t2.trx_id;
 ```  
 
+```
+
 
 # processlist  
 ``` SQL
