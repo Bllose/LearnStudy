@@ -3,6 +3,7 @@
 
 # 查询于锁有关的线程信息
 ``` SQL
+show variables like 'autocommit';
 show full PROCESSLIST;
 select * from information_schema.INNODB_LOCKS;
 select * from information_schema.innodb_lock_waits;
