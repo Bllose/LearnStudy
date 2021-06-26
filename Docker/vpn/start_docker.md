@@ -2,5 +2,6 @@
 > -p 1635/1634/1633 bee request  
 > -p 443 curl openvpn  
 
-``` docker run -v E:\docker_space:/share -it ubuntu:latest /bin/sh ```  
-> -v \[宿主地址] : \[挂载地址]
+``` docker run --network=host -v E:\docker_space:/share -it ubuntu:latest /bin/sh ```  
+> -v \[宿主地址] : \[挂载地址]  
+> --network=host
