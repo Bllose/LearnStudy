@@ -4,10 +4,10 @@
 ``` GO111MODULE = on ```  
 当开启 MOD 模式时， 在项目目录下首先初始化：
 ``` 
-    >go mod init main.go 
-    go: creating new go.mod: module main.go
-    go: to add module requirements and sums:
-            go mod tidy
+>go mod init main.go 
+go: creating new go.mod: module main.go
+go: to add module requirements and sums:
+        go mod tidy
 ```  
 尝试运行:
 ```
@@ -54,5 +54,11 @@ go get: added github.com/gin-gonic/gin v1.7.2
 
 ```  
 
+进入 GOPATH 目录， 观察刚才下载的依赖包：
+```  
+>cd D:\workplace\goWorkPlace\pkg\mod
+>ls
+cache  github.com  golang.org  gopkg.in
+```
 
 
