@@ -1,0 +1,4 @@
+# GOROOT & GOPATH
+
+# GOMOD & GOPATH
+``` GO111MODULE = on ```  
